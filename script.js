@@ -16,11 +16,12 @@ async function generateJokes() {
   //data.setup and data.delivery
   console.log(data)
   console.log(data.joke)
+  console.log(data.setup)
   console.log(data.delivery)
 
   //We are making an IF statement to see which way the API has decided to return the joke.
   //This way we are prepared no matter how the joke is brought to us.
-  
+
   let joke = ""
   if (data.joke == undefined) {
     joke = `${data.setup} <br /> ${data.delivery}`
