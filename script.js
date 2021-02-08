@@ -1,24 +1,24 @@
 const jokeText = document.getElementById("joke");
 const jokeBtn = document.getElementById("jokeBtn");
 
-jokeBtn.addEventListener("click", generateJoke);
+jokeBtn.addEventListener("click", generateJokes)
 
-generateJoke();
+generateJokes()
 
-async function generateJoke() {
+async function generateJokes() {
   const res = await fetch(
-    "https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=racist"
-  );
-
+    "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+  )
   const data = await res.json();
-  console.log(data);
-  console.log(data.joke);
-  console.log(data.delivery);
-  
+  console.log(data)
+  console.log(data.joke)
+  console.log(data.delivery)
+  let joke = ""
   if (data.joke == undefined) {
-    var joke = data.delivery;
+    joke = `${data.setup} <br /> ${data.delivery}`
   } else {
-    var joke = data.joke;
+    joke = data.joke
   }
-  jokeText.innerHTML = joke;
+  jokeText.innerHTML = joke
+
 }
